@@ -1,49 +1,53 @@
 import styled from 'styled-components'
-import MainGrid from '../src/components/MainGrid';
-import Box from '../src/components/Box';
-import { AlurakutMenu, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons'
+import MainGrid from '../src/components/MainGrid'
+import Box from '../src/components/Box'
+import { AlurakutMenu, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons';
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations';
 
-function ProfileSideBar(propriedade) {
+
+function ProfileSidebar(propriedades) {
+  console.log(propriedades);
   return (
-    <Box >
-      <img style={{ borderRadius: '8px ' }} src={`https://github.com/${propriedade.githubUser}.png`} />
+    <Box>
+      <img src={`https://github.com/${propriedades.githubUser}.png`} style={{ borderRadius: '8px' }} />
     </Box>
   )
 }
 
-
 export default function Home() {
-  const githubUser = 'clesiomatias';
+  const usuarioAleatorio = 'clesiomatias';
   const pessoasFavoritas = [
     'juunegreiros',
     'omariosouto',
-    'rafaballerini',
     'peas',
+    'rafaballerini',
     'marcobrunodev',
     'felipefialho'
   ]
+
   return (
     <>
       <AlurakutMenu />
       <MainGrid>
-        <div className='profileArea' style={{ gridArea: 'profileArea' }}>
-          <ProfileSideBar githubUser={githubUser}></ProfileSideBar>
+        {/* <Box style="grid-area: profileArea;"> */}
+        <div className="profileArea" style={{ gridArea: 'profileArea' }}>
+          <ProfileSidebar githubUser={usuarioAleatorio} />
         </div>
-
-        <div className='welcomeArea' style={{ gridArea: 'welcomeArea' }}>
-          <Box >
-            <h1 className='title'>
-              Bem Vindo (a)
+        <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
+          <Box>
+            <h1 className="title">
+              Bem vindo(a)
             </h1>
+
             <OrkutNostalgicIconSet />
           </Box>
         </div>
-        <div className='profileRelationArea' style={{ gridArea: 'profileRelationArea' }}>
-          <ProfileRelationsBoxWrapper >
-            <h2 className='smallTitle'>
-              Pessoas da Comunidade ({pessoasFavoritas.length})
+        <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
+          <ProfileRelationsBoxWrapper>
+            <h2 className="smallTitle">
+              Pessoas da comunidade ({pessoasFavoritas.length})
             </h2>
+
             <ul>
               {pessoasFavoritas.map((itemAtual) => {
                 return (
@@ -54,13 +58,9 @@ export default function Home() {
                     </a>
                   </li>
                 )
-              }
-              )}
+              })}
             </ul>
           </ProfileRelationsBoxWrapper>
-          <Box >
-            Comunidades
-          </Box>
         </div>
       </MainGrid>
     </>
